@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: red;
+}
+
+.container{
+   font-family: 'Poppins', sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.container .content{
+    display: grid;
+    gap: 30px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-bottom: 2px solid black;
+}
+
+.container .content .welcome{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .content .welcome h3 span, .container .content .welcome h1 span{
+    color: crimson;
+}
+
+.container .content form{
+    display: grid;
+    grid-template-columns: repeat(8,auto);
+    gap: 10px;
+}
+
+.container .content form .logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid crimson;
+    background-color: rgba(220, 20, 60, 0.164);
+    border-radius: 5px;
+}
+
+.container .content form .logout a{
+    text-decoration: none;
+    color: crimson;
+    font-size: 16px;
+}
+
+.container .content form input{
+    padding: 10px;
+    background: #eee;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container .content form input[type="submit"]{
+    border: 1px solid crimson;
+    background-color: rgba(220, 20, 60, 0.164);
+    color: crimson;
+}
+
+.container .table{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.container .table table{
+    width: 100%;
+}
+
+.container .table table tr{
+    padding: 20px 10px;
+
+}
+
+.container .table table th{
+}
+
+.container .table table tr td{
+    text-align: end;
+}
+
+.container .table table tr td form button{
+    width: 100%;
+    border: 1px solid crimson;
+    background-color: rgba(220, 20, 60, 0.164);
+    color: crimson;
+}
