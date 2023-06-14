@@ -11,7 +11,6 @@ if (isset($_POST['addPharmacy'])) {
     $inputPharmacyAddress = $_POST['pharmacyAddress'];
 
     if (!empty($inputPharmacyName) && !empty($inputPharmacyAddress)) {
-
         $url = 'http://localhost:8080/api/pharmacies/';
 
         $data = array(
@@ -33,20 +32,15 @@ if (isset($_POST['addPharmacy'])) {
         $context = stream_context_create($options);
 
         $response = file_get_contents($url, false, $context);
-        //echo "response = " . $response;
 
         if ($response === false) {
             echo "Error fetching contents of URL";
         } else {
             $decoded_response = json_decode($response);
-
-            //print_r("decoded response = " . $decoded_response ."<br>");
         }
 
     } else {
-        // echo"pharmacy name and pharmacy address must be filled";
         echo "<script>alert(`Pharmacy Name and Pharmacy Address must be filled`);</script>";
-
     }
 }
 
@@ -141,11 +135,11 @@ if (isset($_POST["updateList"])) {
     $table = "<table>";
     $table .= "<tr><th>ID</th><th>Name</th><th>Address</th><th>Action</th></tr>";
     foreach ($dataArray as $item) {
-        $table .= "<tr><td>" . $item['id'] . "</td><td>" . $item['name'] . "</td><td>" . $item['address'] . "</td><td><form method='POST' action=''><button type='submit' name='deletePharmacy' value='" . $item['id'] . "'>Delete</button></form></td></tr>";
+        $table .= "<tr><td>" . $item['id'] . "</td><td>" . $item['name'] . "</td><td>" . $item['address'] . "</td><td><form method='POST' action=''>
+        <button type='submit' name='deletePharmacy' value='" . $item['id'] . "'>Delete</button></form></td></tr>";
     }
     $table .= "</table>";
 }
-
 
 
 $logs = "";

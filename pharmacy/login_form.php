@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_GET['submit'])) {
    if ($_SERVER["REQUEST_METHOD"] === "GET") {
       // istek yapilacak URL
@@ -30,37 +29,27 @@ if (isset($_GET['submit'])) {
       // istek gonderme
       $response = file_get_contents($url, false, $context);
 
-
-      if ($response === false) {
+      if($response === false){
          echo "Error fetching contents of URL";
-      } else {
+      }
+      else{
          $decoded_response = json_decode($response,true);
-     }
-
+      }
+     
       if (isset($_GET['ID']) && isset($_GET['password'])) {
-         
-         $username = $_GET['ID'];
-         $password = $_GET['password'];
-
-
-         $decodedId = "";
-         $decodedPassword ="";
          if($decoded_response != null){
-            $decodedId = $decoded_response['tcIdNumber'];
-            $decodedPassword = $decoded_response['password'];
-            $isadmin = $decoded_response['isAdmin'];
+            $isAdmin = $decoded_response['isAdmin'];
 
-            $is_admin = $decoded_response['isAdmin'];
             session_start();
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $_GET['ID'];
             $_SESSION['is_logged_in'] = true;
-            if((bool)$is_admin){
+
+            if((bool)$isAdmin){
                header('location:admin_page.php');
             }
             else{
                header('location:user_page.php');
             }
-
          }
          else{
             $error[] = 'Incorrect TRID or password!';

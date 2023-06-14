@@ -1,8 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-   echo "kayit icin butona basildi";
    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-      echo "server istek";
       $url = 'http://localhost:8080/api/appUsers/addUser';
 
       $selectedusertype = $_POST['user_type'];
@@ -12,7 +10,6 @@ if (isset($_POST['submit'])) {
          $is_admin = true;
       }
 
-
       $jsonObject = array(
          'trIdNumber' => $_POST["ID"],
          'password' => $_POST["password"],
@@ -20,7 +17,6 @@ if (isset($_POST['submit'])) {
       );
 
       $jsonString = json_encode($jsonObject);
-      echo "json string = " . $jsonString . "<br>";
 
       // istek ayarlari
       $options = array(
@@ -38,17 +34,13 @@ if (isset($_POST['submit'])) {
       // istek gonderme
       $response = @file_get_contents($url, false, $context);
       if(filter_var($response, FILTER_VALIDATE_BOOLEAN)){
-         echo"basarili";
          header('location:login_form.php');
       }
       else{
-         $error[] = "invalid TC id";
+         $error[] = "invalid TR id";
       }
-      echo"response = " . $response . "<br>";
    }
 }
-
-
 ?>
 
 
