@@ -26,7 +26,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.appuser (
     id integer NOT NULL,
-    tcidnumber character(11) NOT NULL,
+    tridnumber character(11) NOT NULL,
     password character(32) NOT NULL,
     isadmin boolean NOT NULL
 );
@@ -152,11 +152,12 @@ ALTER TABLE ONLY public.pharmacy ALTER COLUMN id SET DEFAULT nextval('public.pha
 -- Data for Name: appuser; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.appuser (id, tcidnumber, password, isadmin) FROM stdin;
+COPY public.appuser (id, tridnumber, password, isadmin) FROM stdin;
 20	12345678912	7815696ecbf1c96e6894b779456d330e	t
 21	98765432198	7815696ecbf1c96e6894b779456d330e	f
 22	12345678914	7815696ecbf1c96e6894b779456d330e	f
 23	12345678996	202cb962ac59075b964b07152d234b70	t
+25	98765432196	7815696ecbf1c96e6894b779456d330e	f
 \.
 
 
@@ -183,6 +184,19 @@ COPY public.appuser_logs (id, tridno, logstring, "timestamp") FROM stdin;
 162	98765432198	Kartal Eczanesi is selected	2023-05-30 14:56:30.51
 163	98765432198	get all operation	2023-05-30 15:04:37.817
 164	98765432198	Inci Eczanesi is selected	2023-05-30 15:04:41.559
+165	98765432198	get all operation	2023-06-04 13:36:09.758
+166	98765432198	Engin Eczanesi is selected	2023-06-04 13:36:53.364
+167	98765432198	get all operation	2023-06-04 13:36:57.516
+169	98765432196	get all operation	2023-06-13 15:08:56.84
+170	98765432196	Halk Eczanesi is selected	2023-06-13 15:09:11.282
+171	98765432196	get all operation	2023-06-13 15:09:23.609
+172	98765432196	get all operation	2023-06-13 15:13:58.2
+173	98765432196	get all operation	2023-06-13 15:14:33.626
+174	98765432196	Kent Eczanesi is selected	2023-06-13 15:15:12.679
+175	98765432198	get all operation	2023-06-13 16:16:44.952
+176	98765432198	get all operation	2023-06-13 16:36:05.732
+177	98765432198	Alp Eczanesi is selected	2023-06-13 16:36:13.279
+178	98765432198	get all operation	2023-06-14 20:18:55.406
 \.
 
 
@@ -213,21 +227,21 @@ Kent Eczanesi	Kent mah. Sehir sk. no:7 K/Keskin	33
 -- Name: appuser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.appuser_id_seq', 23, true);
+SELECT pg_catalog.setval('public.appuser_id_seq', 25, true);
 
 
 --
 -- Name: appuser_logs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.appuser_logs_id_seq', 164, true);
+SELECT pg_catalog.setval('public.appuser_logs_id_seq', 178, true);
 
 
 --
 -- Name: pharmacy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.pharmacy_id_seq', 33, true);
+SELECT pg_catalog.setval('public.pharmacy_id_seq', 35, true);
 
 
 --
