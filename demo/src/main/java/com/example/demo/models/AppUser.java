@@ -30,8 +30,8 @@ public class AppUser {
         return trIdNumber;
     }
 
-    public void setTrIdNumber(String tcIdNumber) {
-        this.trIdNumber = tcIdNumber;
+    public void setTrIdNumber(String trIdNumber) {
+        this.trIdNumber = trIdNumber;
     }
 
     public String getPassword() {

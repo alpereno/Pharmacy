@@ -17,7 +17,7 @@ public class LogManager {
         this.pharmacyLogger = pharmacyLogger;
     }
     
-    public void logToPostgreSql(String userTrId, String logOperation, long logTime){
+    public void logUserOperation(String userTrId, String logOperation, long logTime){
         pharmacyLogger.log(userTrId, logOperation, new Timestamp(logTime));
     }
     

@@ -23,8 +23,6 @@ public class PharmacyPostgreSqlLogger implements PharmacyLogger{
 
     @Override
     public void log(String userTrId, String logOperation, Timestamp logTime) {
-        // u can make these parameters to User and String or userid isUser and log message
-        
         String sql = "INSERT INTO public.appuser_logs (tridno,logstring,timestamp) "
                 + "VALUES ('" + userTrId+ "' , '" + logOperation + "' , '" + logTime + "');";
         
@@ -55,7 +53,7 @@ public class PharmacyPostgreSqlLogger implements PharmacyLogger{
             Class.forName("org.postgresql.Driver");
             c = DriverManager.getConnection(url, user, password);
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
+            System.out.println("Opened log database successfully");
 
             stmt = c.createStatement();
             ResultSet resultSet = stmt.executeQuery(query);
@@ -75,7 +73,6 @@ public class PharmacyPostgreSqlLogger implements PharmacyLogger{
         }
         
          System.out.println("Operation done successfully");
-         //pharmacyLogger.log(0, "log message get all");
          return allLogs;
     }
 }

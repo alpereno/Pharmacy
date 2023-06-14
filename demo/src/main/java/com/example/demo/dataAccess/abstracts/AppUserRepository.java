@@ -4,5 +4,5 @@ import com.example.demo.models.AppUser;
 
 public interface AppUserRepository {
     boolean insertUser(AppUser appUser);
-    AppUser getUserByTcId(String tcId);
+    AppUser getUserByTrId(String trId);
 }

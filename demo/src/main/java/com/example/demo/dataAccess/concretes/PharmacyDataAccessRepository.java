@@ -47,7 +47,7 @@ public class PharmacyDataAccessRepository implements PharmacyRepository{
             System.exit(0);
         }
         
-         System.out.println("get all Operation done successfully");
+         System.out.println("get all Operation done successfully in pdar");
          return allPharmacies;
     }
 

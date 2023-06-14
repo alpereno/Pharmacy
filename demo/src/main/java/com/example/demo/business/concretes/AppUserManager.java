@@ -12,10 +12,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AppUserManager implements AppUserService{
-    
+
     AppUserRepository appUserRepository;
-    
-                          // can be changed for a different database at any time 
+                          // Can be changed for a different database at any time 
                           // There is no need to change the business codes here because the new database must implement the AppUserRepository interface.
     
     @Autowired
@@ -29,23 +28,19 @@ public class AppUserManager implements AppUserService{
         String userPassword = user.getPassword();
         
         if (userTrIdNumber == null || userTrIdNumber.length() != 11) {
-            System.out.println("tc must be 11 digits");
-        }
-        
-        if (userPassword == null || userPassword.length() > 10) {
-            System.out.println("password must be 1-10 digits");
+            System.out.println("TR ID must be 11 digits");
         }
         
         int lastDigit = userTrIdNumber.charAt(userTrIdNumber.length()-1);
         // According to ASCII, numbers start at 48(0) and end at 57(9). I subtract 48 to know what number the last digit is.
         lastDigit -= 48;
         if (lastDigit%2 != 0) {
-            System.out.println("the last digit of TC cannot end with an odd number");
+            System.out.println("the last digit of TR ID cannot end with an odd number");
             return false;
         }
         
-        if (appUserRepository.getUserByTcId(userTrIdNumber) != null) {
-            System.out.println("this tc already exists");
+        if (appUserRepository.getUserByTrId(userTrIdNumber) != null) {
+            System.out.println("this TR ID already exists");
             return false;
         }
         
@@ -56,11 +51,10 @@ public class AppUserManager implements AppUserService{
 
     @Override
     public AppUser login(AppUser user){
-        AppUser dbUser = appUserRepository.getUserByTcId(user.getTrIdNumber());
+        AppUser dbUser = appUserRepository.getUserByTrId(user.getTrIdNumber());
         if (dbUser != null) {
             String userPassword = user.getPassword();
             String dbUserPasswrod = dbUser.getPassword();
-            //System.out.println("user pw b4 md5 = " + userPassword);
             try{
                 userPassword = getMD5(userPassword);
             }

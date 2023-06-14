@@ -22,7 +22,7 @@ public class AppUserDataAccessRepository implements AppUserRepository{
     @Override
     public boolean insertUser(AppUser appUser) {
         
-        String sql = "INSERT INTO public.appUser (tcidnumber,password,isadmin) "
+        String sql = "INSERT INTO public.appUser (tridnumber,password,isadmin) "
                 + "VALUES ('" + appUser.getTrIdNumber() + "' , '" + appUser.getPassword() + "' , '" + appUser.isIsAdmin() +"');";
         
         executeSqlCommand(sql);
@@ -51,8 +51,8 @@ public class AppUserDataAccessRepository implements AppUserRepository{
     }
 
     @Override
-    public AppUser getUserByTcId(String trId) {
-        String sql = "SELECT * from public.appuser WHERE tcidnumber= '" + trId + "'";
+    public AppUser getUserByTrId(String trId) {
+        String sql = "SELECT * from public.appuser WHERE tridnumber= '" + trId + "'";
         AppUser selectedAppUser = null;
         try {
             Class.forName("org.postgresql.Driver");
@@ -63,7 +63,7 @@ public class AppUserDataAccessRepository implements AppUserRepository{
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
             if (rs.getInt("id") != 0) {
-                selectedAppUser = new AppUser(rs.getInt("id"), rs.getString("tcidnumber"), rs.getString("password"), rs.getBoolean("isadmin"));
+                selectedAppUser = new AppUser(rs.getInt("id"), rs.getString("tridnumber"), rs.getString("password"), rs.getBoolean("isadmin"));
                 }    
             }        
             stmt.close();

@@ -40,7 +40,5 @@ public class Log {
     public void setTimeStamp(Timestamp timeStamp) {
         this.timeStamp = timeStamp;
     }
-    
-    
-    
+
 }
